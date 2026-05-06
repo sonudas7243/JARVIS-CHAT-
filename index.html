@@ -683,25 +683,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(
      <div class="sil">OpenRouter API Key</div>
      <div class="sid">Required for AI responses</div>
      <input type="password" class="si2" id="sor" placeholder="sk-or-v1-...">
-    </div>
-   </div>
-   <div class="sit">
-    <span class="sii">&#9889;</span>
-    <div class="sin">
-     <div class="sil">Model Mode</div>
-     <select class="ssel" id="smdl">
-      <option value="auto">Auto Switch (Recommended)</option>
-      <option value="fast">Always FAST 20B</option>
-      <option value="power">Always POWER CORE 120B</option>
-     </select>
-    </div>
-   </div>
-  </div>
-
-  <div class="ssec">
-   <div class="ssect">API KEYS</div>
-   <div class="sit"><span class="sii">&#127780;</span><div class="sin"><div class="sil">OpenWeatherMap</div><input type="password" class="si2" id="swx" placeholder="Weather API key"></div></div>
-   <div class="sit"><span class="sii">&#128240;</span><div class="sin"><div class="sil">NewsAPI</div><input type="password" class="si2" id="snw" placeholder="News API key"></div></div>
+    </div><div class="sit"><span class="sii">&#128240;</span><div class="sin"><div class="sil">GNews API</div><input type="password" class="si2" id="sgn" placeholder="GNews API key"></div></div>
    <div class="sit"><span class="sii">&#9654;</span><div class="sin"><div class="sil">YouTube Data API v3</div><input type="password" class="si2" id="syt" placeholder="YouTube API key"></div></div>
    <div class="sit"><span class="sii">&#128172;</span><div class="sin"><div class="sil">WhatsApp (PickyAssist)</div><input type="password" class="si2" id="swa" placeholder="WA API key"></div></div>
    <div class="sit"><span class="sii">&#127908;</span><div class="sin"><div class="sil">ElevenLabs API Key</div><input type="password" class="si2" id="sel" placeholder="sk_..."></div></div>
@@ -1665,7 +1647,7 @@ function wxDemo(city){const icos=['Cloudy','Sunny','Clear','Rainy','Storm'];cons
 function wxIco(c){return{Clear:'*',Clouds:'~',Rain:'+',Drizzle:'+',Thunderstorm:'!',Snow:'*',Mist:'-',Fog:'-',Haze:'-'}[c]||'~';}
 
 // NEWS 
- async function loadNews(cat,btn){
+ async function loadGNews(cat,btn){
   if(btn){
     document.querySelectorAll('.ncbt').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
@@ -1748,7 +1730,7 @@ function updAdm(){
   const hasVoice=!!(window.SpeechRecognition||window.webkitSpeechRecognition);
   document.getElementById('adm-vc').textContent=hasVoice?'Supported':'Not Supported';
   document.getElementById('adm-vc').className='tag '+(hasVoice?'tg-g':'tg-r');
-  const apis=[{n:'OpenRouter AI',k:S.cfg.orKey},{n:'OpenWeatherMap',k:S.cfg.wxKey},{n:'NewsAPI',k:S.cfg.nwKey},{n:'YouTube',k:S.cfg.ytKey},{n:'WhatsApp',k:S.cfg.waKey},{n:'ElevenLabs API',k:S.cfg.elKey},{n:'ElevenLabs Voice ID',k:S.cfg.viId},{n:'Google Search',k:S.cfg.ggKey},{n:'Setalight3D',k:S.cfg.satKey}];
+  const apis=[{n:'OpenRouter AI',k:S.cfg.orKey},{n:'OpenWeatherMap',k:S.cfg.wxKey},{n:'<div class="sit"><span class="sii">&#128240;</span><div class="sin"><div class="sil">GNews API</div><input type="password" class="si2" id="sgn" placeholder="GNews API key"></div></div>',k:S.cfg.nwKey},{n:'YouTube',k:S.cfg.ytKey},{n:'WhatsApp',k:S.cfg.waKey},{n:'ElevenLabs API',k:S.cfg.elKey},{n:'ElevenLabs Voice ID',k:S.cfg.viId},{n:'Google Search',k:S.cfg.ggKey},{n:'Setalight3D',k:S.cfg.satKey}];
   document.getElementById('adm-apis').innerHTML=apis.map(a=>'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;padding:6px 8px;background:var(--bg3);border-radius:7px;"><div style="font-size:11px;font-weight:600;">'+a.n+'</div><span class="tag '+(a.k?'tg-g':'tg-r')+'">'+(a.k?'Set':'Missing')+'</span></div>').join('');
   const acts=S.actLog.slice(-10).reverse();
   document.getElementById('adm-act').innerHTML=acts.length?acts.map(a=>'<div class="ali"><span class="ali-ico">'+a.ico+'</span><span class="ali-txt">'+escH(a.txt)+'</span><span class="ali-t">'+a.time+'</span></div>').join(''):'<div style="font-size:11px;color:var(--txt3);">No activity yet</div>';
